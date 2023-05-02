@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".FragmentBottom_text_report">
+
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerBottomLayout_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbarBottom_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:title="Nthandizi"
+                    app:navigationIcon="@drawable/baseline_menu_24"
+                    android:background="@color/white"/>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <!-- content here        -->
+
+
+
+
+
+
+
+            <FrameLayout
+                android:id="@+id/frameBottomLayout_id"
+                android:layout_below="@+id/appbarBottom_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <TextView
+                        android:id="@+id/ReportTextTitle_id"
+                        style="@style/BodyText_title"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="101dp"
+                        android:layout_marginEnd="301dp"
+                        android:text="File A Report" />
+
+                    <EditText
+                        android:id="@+id/EdiText_reportId"
+                        android:layout_width="380dp"
+                        android:layout_height="150dp"
+                        android:layout_below="@+id/ReportTextTitle_id"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="27dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="27dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edittext_customized" />
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout_Id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/EdiText_reportId"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="27dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="27dp"
+                        android:gravity="center">
+
+
+                        <RadioGroup
+                            android:id="@+id/radioGroup_Id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/radioBtn_Red_Id"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:theme="@style/RadioButtonStyle"
+                                android:onClick="OnRadioBtnClicked"
+                                />
+
+                            <RadioButton
+                                android:id="@+id/radioBtn_Amber_Id"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:onClick="OnRadioBtnClicked"
+                                android:theme="@style/RadioButtonStyle"/>
+
+                            <RadioButton
+                                android:id="@+id/radioBtn_Yellow_Id"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:button="@drawable/red_radiobtn"
+                                android:theme="@style/RadioButtonStyle"
+                                android:onClick="OnRadioBtnClicked"/>
+
+                            <RadioButton
+                                android:id="@+id/radioBtn_Orange_Id"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:onClick="OnRadioBtnClicked"
+                                android:theme="@style/RadioButtonStyle"/>
+
+                        </RadioGroup>
+                    </LinearLayout>
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/signInBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_below="@+id/LinearLayout_Id"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="27dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginEnd="27dp"
+                        android:background="@drawable/round_back_primary_15"
+                        android:text="Send Report"
+                        android:textAllCaps="false"
+                        android:textColor="#ffffff" />
+
+                </RelativeLayout>
+
+
+            </FrameLayout>
+
+        </RelativeLayout>
+
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</FrameLayout>
