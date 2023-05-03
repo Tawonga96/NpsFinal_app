@@ -20,8 +20,10 @@
                 android:id="@+id/topAppBar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:title="Nthandizi"
+                app:title="N.P.S"
                 app:navigationIcon="@drawable/baseline_menu_24"
+                app:navigationIconTint="@color/primary"
+                app:titleTextColor="@color/secondary"
                 android:background="@color/white"
                 />
         </com.google.android.material.appbar.AppBarLayout>
@@ -33,15 +35,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
+        <!-- Bottom menu        -->
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_menu_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/bottom_nav_items"
+            app:itemTextColor="@color/white"
+            app:itemIconTint="@color/white"
+            android:background="@drawable/dialogbox"
+            android:layout_alignParentBottom="true"
+            />
     </RelativeLayout>
+
     <!--  add navigation layout  -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
+        app:itemIconTint="@color/primary"
+        app:itemTextColor="#686868"
         app:menu="@menu/drawer_nav_items"
         app:headerLayout="@layout/nav_drawer_header"
         android:visibility="visible"
+        android:layout_gravity="start"
         />
 </androidx.drawerlayout.widget.DrawerLayout>

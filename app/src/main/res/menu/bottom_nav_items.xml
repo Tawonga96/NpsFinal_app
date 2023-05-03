@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/Home_bottom_id"
+        android:icon="@drawable/home"
+        android:title="Home"/>
+
+    <item android:id="@+id/message_bottom_id"
+        android:icon="@drawable/message"
+        android:title="Message"/>
+
+    <item android:id="@+id/video_bottom_id"
+        android:icon="@drawable/baseline_linked_camera"
+        android:title="Video"/>
+
+    <item android:id="@+id/image_bottom_id"
+        android:icon="@drawable/baseline_video_library_24"
+        android:title="Message"/>
+
+
+</menu>

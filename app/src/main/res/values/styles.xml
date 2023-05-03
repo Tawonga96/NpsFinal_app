@@ -14,7 +14,7 @@
         <item name="android:shadowDx">2</item>
         <item name="android:shadowDy">2</item>
         <item name="android:shadowRadius">3</item>
-        <item name="android:textAppearance">@android:style/TextAppearance.Small</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Large</item>
     </style>
     
     <style name="RadioButtonStyle" parent="Theme.AppCompat.Light">
