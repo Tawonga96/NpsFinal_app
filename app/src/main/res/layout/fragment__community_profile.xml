@@ -1,14 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EAEAEA"
     tools:context=".Fragment_CommunityProfile">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/header_profile_id"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="-120dp"
+            android:background="@drawable/oval_layer_list"
+            android:orientation="vertical"
+            android:gravity="bottom">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_id"
+                android:layout_width="91dp"
+                android:layout_height="81dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/logo"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_below="@+id/header_profile_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rectangle_shape_list"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tawonga Chauluntha"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:textColor="@color/secondary"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="0991412776"
+                />
+        </LinearLayout>
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
 
 </FrameLayout>
