@@ -8,69 +8,31 @@
     tools:context=".Fragment_CommunityProfile">
 
     <!-- TODO: Update blank fragment layout -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:id="@+id/header_profile_id"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="-120dp"
-            android:background="@drawable/oval_layer_list"
-            android:orientation="vertical"
-            android:gravity="bottom">
+            android:layout_height="match_parent">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_id"
-                android:layout_width="91dp"
-                android:layout_height="81dp"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/logo"
-                android:layout_gravity="center"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_below="@+id/header_profile_id"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/rectangle_shape_list"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="50dp"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_below="@+id/linear_layout_fragment_id"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tawonga Chauluntha"
-                android:layout_gravity="center"
-                android:textSize="18sp"
-                android:textColor="@color/secondary"/>
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/primary"
+                    android:padding="10dp">
 
-                android:text="0991412776"
-                />
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Community name"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </LinearLayout>
 
-
-
-
-
-
-    </RelativeLayout>
-
-
-
-
-
-
-
-
+        </ScrollView>
 </FrameLayout>
