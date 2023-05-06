@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+tools:showIn="navigation_view">
+
+<item android:title="Profile">
+    <menu>
+        <group android:checkableBehavior="single">
+            <item android:id="@+id/personal_profile_id"
+                android:icon="@drawable/profile"
+                android:title="Personal"
+                android:iconTint="@color/primary"
+                />
+
+            <item android:id="@+id/comm_profile_id"
+                android:icon="@drawable/family"
+                android:title="Community"
+                android:iconTint="@color/primary"
+                />
+
+            <item android:id="@+id/ps_profile_id"
+                android:icon="@drawable/baseline_local_police_24"
+                android:title="Police Station"
+                android:iconTint="@color/primary"
+                />
+        </group>
+    </menu>
+</item>
+
+<item android:title="Information">
+    <menu>
+        <group android:checkableBehavior="single">
+            <item android:id="@+id/viewReport_id"
+                android:icon="@drawable/baseline_collections_24"
+                android:title="View Reports"
+                android:iconTint="@color/primary"
+                />
+
+            <item android:id="@+id/GeneratedReport_id"
+                android:icon="@drawable/baseline_library_books"
+                android:title="Generated Reports"
+                android:iconTint="@color/primary"
+                />
+
+            <item android:id="@+id/NpsInfo_id"
+                android:icon="@drawable/baseline_info"
+                android:title="Nthandizi Ps"
+                android:iconTint="@color/primary"
+                />
+        </group>
+    </menu>
+</item>
+
+<group android:checkableBehavior="single">
+    <item android:id="@+id/logout_id"
+        android:icon="@drawable/logout"
+        android:title="Logout"
+        android:iconTint="@color/primary"
+        />
+</group>
+
+
+</menu>
