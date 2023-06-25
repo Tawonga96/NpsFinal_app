@@ -62,24 +62,23 @@ public class Home_activity extends AppCompatActivity {
 
         //when bottom navigation items clicked or selected
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_menu_id);
-        bottomNavigationView.setOnItemReselectedListener(item -> {
+        bottomNavigationView.setOnItemSelectedListener(item -> {
             int bottomNav_id = item.getItemId();
 
-            if(bottomNav_id == R.id.Home_bottom_id){
+            if (bottomNav_id == R.id.btm_home) {
                 Intent Home_Intent = new Intent(Home_activity.this, Home_activity.class);
                 startActivity(Home_Intent);
-            }
-            else if(bottomNav_id == R.id.message_bottom_id){
+            } else if (bottomNav_id == R.id.btm_message) {
                 replaceFragment(new FragmentBottom_text_report());
-            }
-            else if(bottomNav_id == R.id.image_bottom_id){
+            } else if (bottomNav_id == R.id.btm_picture) {
                 replaceFragment(new FragmentBottom_image_report());
-            }
-            else if(bottomNav_id == R.id.video_bottom_id){
+            } else if (bottomNav_id == R.id.btm_video) {
                 replaceFragment(new FragmentBottom_video_report());
             }
 
+            return true;
         });
+
     }
     //to replace framework with fragment
     private void replaceFragment(Fragment fragment){

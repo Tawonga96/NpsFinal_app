@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "Nthandizi_police_service_app_ver1"
 include ':app'
 include ':police_officer'
+include ':community_leader'

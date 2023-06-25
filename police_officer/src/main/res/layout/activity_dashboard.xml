@@ -24,13 +24,14 @@
                 app:navigationIcon="@drawable/baseline_menu_24"
                 app:navigationIconTint="@color/primary"
                 app:titleTextColor="@color/secondary"
-                android:background="@color/white"
+                android:background="#E8E8E8"
                 />
         </com.google.android.material.appbar.AppBarLayout>
         <!-- content here        -->
 
         <FrameLayout
             android:id="@+id/frameLayout"
+            android:background="#EAEAEA"
             android:layout_below="@+id/appbar_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
@@ -40,10 +41,9 @@
             android:id="@+id/bottom_menu_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:menu="@menu/bottom_nav_items"
-            app:itemTextColor="@color/white"
-            app:itemIconTint="@color/white"
-            android:background="@drawable/dialogbox"
+            app:menu="@menu/bottom_menu"
+            app:itemTextColor="@color/lavender"
+            app:itemIconTint="@color/lavender"
             android:layout_alignParentBottom="true"
             />
     </RelativeLayout>

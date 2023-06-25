@@ -17,12 +17,11 @@ public class Login_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        final EditText usernameET = findViewById(R.id.usernameET);
-        final EditText passwordET = findViewById(R.id.passwordET);
-        final ImageView passwordIcon = findViewById(R.id.passwordIcon);
-        final TextView signUpBtn = findViewById(R.id.signUpBtn);
-        final AppCompatButton signInBtn = findViewById(R.id.signInBtn);
+        setContentView(R.layout.activity_login);
+        EditText usernameET = findViewById(R.id.usernameET);
+        EditText passwordET = findViewById(R.id.passwordET);
+        ImageView passwordIcon = findViewById(R.id.passwordIcon);
+        AppCompatButton signInBtn = findViewById(R.id.signInBtn);
 
         //when sign in button clicked
         signInBtn.setOnClickListener(new View.OnClickListener() {
@@ -56,12 +55,6 @@ public class Login_Activity extends AppCompatActivity {
             }
         });
 
-        //when signup button clicked
-        signUpBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Login_Activity.this, Register_Activity.class));
-            }
-        });
+
     }
 }

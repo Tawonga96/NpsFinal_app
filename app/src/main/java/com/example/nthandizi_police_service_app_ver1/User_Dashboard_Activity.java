@@ -6,6 +6,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,12 +16,16 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User_Dashboard_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dashboard);
+        replaceFragment(new FragmentBottom_home());
 
         //creating object and initialisation
         MaterialToolbar toolbar = findViewById(R.id.topAppBar);
@@ -62,24 +68,22 @@ public class User_Dashboard_Activity extends AppCompatActivity {
 
         //when bottom navigation items clicked or selected
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_menu_id);
-        bottomNavigationView.setOnItemReselectedListener(item -> {
+        bottomNavigationView.setOnItemSelectedListener(item -> {
             int bottomNav_id = item.getItemId();
 
-            if(bottomNav_id == R.id.Home_bottom_id){
-                Intent Home_Intent = new Intent(User_Dashboard_Activity.this, User_Dashboard_Activity.class);
-                startActivity(Home_Intent);
-            }
-            else if(bottomNav_id == R.id.message_bottom_id){
+            if (bottomNav_id == R.id.btm_home) {
+                replaceFragment(new FragmentBottom_home());
+            } else if (bottomNav_id == R.id.btm_message) {
                 replaceFragment(new FragmentBottom_text_report());
-            }
-            else if(bottomNav_id == R.id.image_bottom_id){
+            } else if (bottomNav_id == R.id.btm_picture) {
                 replaceFragment(new FragmentBottom_image_report());
-            }
-            else if(bottomNav_id == R.id.video_bottom_id){
+            } else if (bottomNav_id == R.id.btm_video) {
                 replaceFragment(new FragmentBottom_video_report());
             }
 
+            return true;
         });
+
     }
     //to replace framework with fragment
     private void replaceFragment(Fragment fragment){
@@ -88,5 +92,4 @@ public class User_Dashboard_Activity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frameLayout,fragment);
         fragmentTransaction.commit();
     }
-
 }

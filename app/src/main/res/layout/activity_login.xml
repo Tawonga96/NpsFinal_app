@@ -101,91 +101,11 @@
         android:textColor="#ffffff"
         />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp">
-
-        <View
-            android:layout_centerVertical="true"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#1a000000"
-            android:layout_toStartOf="@+id/orTxt"
-            android:layout_marginEnd="20dp"
-            android:layout_marginStart="20dp"/>
-
-        <TextView
-            android:id="@+id/orTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="OR"
-            android:textColor="#80000000"
-            android:textSize="12sp" />
-
-        <View
-            android:layout_centerVertical="true"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#1a000000"
-            android:layout_toEndOf="@+id/orTxt"
-            android:layout_marginEnd="20dp"
-            android:layout_marginStart="20dp"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/signInWithGoogle"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@drawable/round_back_dark_blue5_15"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp">
-
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="20dp"
-            android:adjustViewBounds="true"
-            android:src="@drawable/google"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textColor="#E6000000"
-            android:textStyle="bold"
-            android:text="Sign in with Google"/>
-
-    </RelativeLayout>
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginTop="40dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Don't have an account?"
-            android:textColor="#80000000"/>
-
-        <TextView
-            android:id="@+id/signUpBtn"
-            android:layout_marginStart="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sign Up"
-            android:textColor="@color/primary"
-            android:textStyle="bold"/>
-
-    </LinearLayout>
+        android:layout_marginTop="40dp"/>
 
 </LinearLayout>
