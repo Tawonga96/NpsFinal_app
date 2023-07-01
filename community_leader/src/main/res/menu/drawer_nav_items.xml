@@ -12,7 +12,7 @@
                     android:iconTint="@color/primary"
                     />
 
-                <item android:id="@+id/comm_profile_id"
+                <item android:id="@+id/add_member"
                     android:icon="@drawable/baseline_person_add_24"
                     android:title="Add Member"
                     android:iconTint="@color/primary"
@@ -36,6 +36,13 @@
                     android:title="Generated Reports"
                     android:iconTint="@color/primary"
                     />
+                <item android:id="@+id/Comm_Info"
+                    android:icon="@drawable/baseline_people_24"
+                    android:title="Community Information"
+                    android:iconTint="@color/primary"
+                    />
+
+
             </group>
         </menu>
     </item>

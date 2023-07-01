@@ -50,9 +50,7 @@ public class User_Dashboard_Activity extends AppCompatActivity {
             else if(id== R.id.ps_profile_id){
                 replaceFragment(new Fragment_PoliceProfile());
             }
-            else if(id==R.id.viewReport_id){
-                replaceFragment(new Fragment_ViewReports());
-            }
+
             else if(id== R.id.GeneratedReport_id){
                 replaceFragment(new Fragment_GeneratedReports());
             }

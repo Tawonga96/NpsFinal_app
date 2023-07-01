@@ -36,7 +36,7 @@ public class Home_activity extends AppCompatActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
 
             if(id== R.id.personal_profile_id){
-                replaceFragment(new Fragment_communityProfile());
+                replaceFragment(new Fragment_officerProfile());
             }
             else if(id==R.id.comm_profile_id){
                 replaceFragment(new Fragment_communityProfile());
@@ -44,9 +44,7 @@ public class Home_activity extends AppCompatActivity {
             else if(id== R.id.ps_profile_id){
                 replaceFragment(new Fragment_policeStation_Profile());
             }
-            else if(id==R.id.viewReport_id){
-                replaceFragment(new Fragment_ViewReports());
-            }
+
             else if(id== R.id.GeneratedReport_id){
                 replaceFragment(new Fragment_Generate_Report());
             }

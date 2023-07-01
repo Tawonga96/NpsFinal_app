@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/community_leader" />
+            <option value="$PROJECT_DIR$/leader" />
             <option value="$PROJECT_DIR$/police_officer" />
           </set>
         </option>

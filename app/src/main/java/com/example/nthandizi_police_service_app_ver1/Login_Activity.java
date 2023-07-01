@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.nthandizi_police_service_app_ver1.models.Login;
+
 public class Login_Activity extends AppCompatActivity {
     private boolean passwordShowing = false;
 
@@ -27,7 +29,13 @@ public class Login_Activity extends AppCompatActivity {
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Login_Activity.this, User_Dashboard_Activity.class));
+                String fname = usernameET.getText().toString();
+                String password = passwordET.getText().toString();
+
+                Login.login(fname, password, Login_Activity.this);
+
+                Intent intent = new Intent(Login_Activity.this, User_Dashboard_Activity.class);
+                startActivity(intent);
             }
         });
 

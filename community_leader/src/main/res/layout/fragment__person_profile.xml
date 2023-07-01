@@ -31,24 +31,42 @@
                     android:layout_centerVertical="true"
                     android:src="@drawable/profile"/>
 
-                <TextView
-                    android:id="@+id/username_id"
+                <LinearLayout
+                    android:id="@+id/userDetails_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tawonga chauluntha"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
-                    android:layout_toEndOf="@+id/Image_profile_id"
-                    android:textColor="@color/white"
-                    android:letterSpacing="0.2"
-                    android:textSize="18sp"
-                    android:includeFontPadding="false"/>
+                    android:layout_toEndOf="@+id/Image_profile_id">
+
+                    <TextView
+                        android:id="@+id/fname_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tawonga"
+                        android:textColor="@color/white"
+                        android:letterSpacing="0.2"
+                        android:textSize="18sp"
+                        android:includeFontPadding="false"/>
+
+                    <TextView
+                        android:id="@+id/lname_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="chauluntha"
+                        android:textColor="@color/white"
+                        android:layout_marginStart="6dp"
+                        android:letterSpacing="0.2"
+                        android:textSize="18sp"
+                        android:includeFontPadding="false"/>
+                </LinearLayout>
+
 
                 <TextView
                     android:id="@+id/community_name_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/username_id"
+                    android:layout_below="@+id/userDetails_id"
                     android:text="Community name"
                     android:layout_toEndOf="@+id/Image_profile_id"
                     android:textColor="@color/white"
@@ -180,18 +198,6 @@
                         android:textColor="@color/secondary"
                         android:textSize="18sp" />
                 </LinearLayout>
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/signInBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="100dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/round_back_primary_15"
-                    android:text="Update"
-                    android:textAllCaps="false"
-                    android:textColor="#ffffff" />
 
             </LinearLayout>
         </LinearLayout>

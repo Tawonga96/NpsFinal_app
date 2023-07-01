@@ -1,64 +1,51 @@
 package com.example.community_leader;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Fragment_PersonProfile#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class Fragment_PersonProfile extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public Fragment_PersonProfile() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragment_PersonProfile.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Fragment_PersonProfile newInstance(String param1, String param2) {
-        Fragment_PersonProfile fragment = new Fragment_PersonProfile();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    private TextView phoneNumTV, emailTV, fnameTV, lnameTV;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment__person_profile, container, false);
+        View view =inflater.inflate(R.layout.fragment__person_profile, container, false);
+        fnameTV = view.findViewById(R.id.fname_id);
+        lnameTV = view.findViewById(R.id.lname_id);
+        phoneNumTV =view.findViewById(R.id.profile_num_id);
+        emailTV =view.findViewById(R.id.profile_email_id);
 
+
+        // Retrieve the SharedPreferences values
+        SharedPreferences preferences = requireContext().getSharedPreferences("UserSession", MODE_PRIVATE);
+        int uid = preferences.getInt("uid", 0);
+        String firstName = preferences.getString("fname", "");
+        String lastName = preferences.getString("lname", "");
+        String email = preferences.getString("email", "");
+        String phoneNumber = preferences.getString("pnumber", "");
+
+        //Display retrieved values
+        fnameTV.setText(firstName);
+        lnameTV.setText(lastName);
+        emailTV.setText(email);
+        phoneNumTV.setText(phoneNumber);
+
+
+        return  view;
     }
 }

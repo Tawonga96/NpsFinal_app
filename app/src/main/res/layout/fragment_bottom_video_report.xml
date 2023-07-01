@@ -5,13 +5,102 @@
     android:layout_height="match_parent"
     tools:context=".FragmentBottom_video_report">
 
-    <Button
-        android:id="@+id/video"
+    <VideoView
+        android:id="@+id/videoPreview"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"/>
+
+
+    <LinearLayout
+        android:id="@+id/LinearLayout_Id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="350dp"
+        android:layout_marginEnd="27dp"
+        android:gravity="center">
+
+
+        <RadioGroup
+            android:id="@+id/radioGroup_Id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioBtn_optA_Id"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="@null"
+                android:button="@null"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/radiobutton_red"
+                />
+
+            <RadioButton
+                android:id="@+id/radioBtn_optD_Id"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="@null"
+                android:button="@null"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/radiobutton_green"/>
+
+            <RadioButton
+                android:id="@+id/radioBtn_optB_Id"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="@null"
+                android:button="@null"
+                android:background="@drawable/radiobutton_amber"
+                android:layout_marginEnd="5dp"/>
+
+            <RadioButton
+                android:id="@+id/radioBtn_optC_Id"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="@null"
+                android:button="@null"
+                android:background="@drawable/radiobutton_yellow"
+                android:layout_marginEnd="5dp"/>
+
+        </RadioGroup>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/recordButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="450dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:text="Video" />
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="@color/lavender"
+        android:text="Record" />
+
+    <Button
+        android:id="@+id/uploadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload"
+        android:backgroundTint="@color/lavender"
+        android:layout_marginStart="240dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="450dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/changePass"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="550dp"
+        android:layout_marginEnd="60dp"
+        android:background="@color/lavender"
+        android:text="Send"
+        android:textSize="20sp"
+        android:textAllCaps="true"
+        android:textColor="#ffffff" />
+
 
 </FrameLayout>

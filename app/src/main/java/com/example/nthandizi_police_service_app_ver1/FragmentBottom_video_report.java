@@ -1,79 +1,100 @@
 package com.example.nthandizi_police_service_app_ver1;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
+import android.widget.VideoView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentBottom_video_report#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.fragment.app.Fragment;
+
 public class FragmentBottom_video_report extends Fragment {
 
-    Button video;
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public FragmentBottom_video_report() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentBottom_video_report.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FragmentBottom_video_report newInstance(String param1, String param2) {
-        FragmentBottom_video_report fragment = new FragmentBottom_video_report();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private VideoView videoPreview;
+    private Button recordButton;
+    private Button uploadButton;
+    private static final int VIDEO_CAPTURE_REQUEST_CODE = 1;
+    private static final int VIDEO_PICK_REQUEST_CODE = 2;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_bottom_video_report, container, false);
+
+        videoPreview = view.findViewById(R.id.videoPreview);
+        recordButton = view.findViewById(R.id.recordButton);
+        uploadButton = view.findViewById(R.id.uploadButton);
+
+        // Set click listeners for the buttons
+        recordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle record button click
+                startRecording();
+            }
+        });
+
+        uploadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle upload button click
+                openGallery();
+            }
+        });
+
+        return view;
+    }
+
+    private void startRecording() {
+        Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+        if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+            startActivityForResult(intent, VIDEO_CAPTURE_REQUEST_CODE);
+        } else {
+            Toast.makeText(getContext(), "No camera app found", Toast.LENGTH_SHORT).show();
         }
     }
 
+    private void openGallery() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, VIDEO_PICK_REQUEST_CODE);
+    }
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_bottom_video_report, container, false);
-
-        Button video = view.findViewById(R.id.video);
-        video.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), Video.class);
-                startActivity(intent);
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == VIDEO_CAPTURE_REQUEST_CODE) {
+            if (resultCode == getActivity().RESULT_OK) {
+                // Video recorded successfully
+                Toast.makeText(getContext(), "Video recorded", Toast.LENGTH_SHORT).show();
+                // Get the recorded video URI
+                Uri videoUri = data.getData();
+                // Display the recorded video in the VideoView
+                videoPreview.setVideoURI(videoUri);
+                videoPreview.start();
+            } else if (resultCode == getActivity().RESULT_CANCELED) {
+                // Video recording cancelled
+                Toast.makeText(getContext(), "Video recording cancelled", Toast.LENGTH_SHORT).show();
+            } else {
+                // Video recording failed
+                Toast.makeText(getContext(), "Video recording failed", Toast.LENGTH_SHORT).show();
             }
-        });
-        return view;
-
+        } else if (requestCode == VIDEO_PICK_REQUEST_CODE) {
+            if (resultCode == getActivity().RESULT_OK) {
+                // Video picked from gallery successfully
+                Uri videoUri = data.getData();
+                // Display the picked video in the VideoView
+                videoPreview.setVideoURI(videoUri);
+                videoPreview.start();
+            } else if (resultCode == getActivity().RESULT_CANCELED) {
+                // Video picking cancelled
+                Toast.makeText(getContext(), "Video picking cancelled", Toast.LENGTH_SHORT).show();
+            } else {
+                // Video picking failed
+                Toast.makeText(getContext(), "Video picking failed", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

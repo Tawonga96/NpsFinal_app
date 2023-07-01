@@ -1,5 +1,8 @@
 package com.example.community_leader;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,14 +41,19 @@ public class User_Dashboard_Activity extends AppCompatActivity {
             if(id== R.id.personal_profile_id){
                 replaceFragment(new Fragment_PersonProfile());
             }
-            else if(id==R.id.comm_profile_id){
-                replaceFragment(new Fragment_CommunityProfile());
+            else if(id==R.id.add_member){
+                replaceFragment(new Fragment_Add_Community_Member());
             }
             else if(id== R.id.ps_profile_id){
                 replaceFragment(new Fragment_PoliceProfile());
             }
             else if(id== R.id.GeneratedReport_id){
                 replaceFragment(new Fragment_GeneratedReports());
+            }
+            else if(id== R.id.Comm_Info){
+                replaceFragment(new CommunityInformationFragment());
+            }else if(id==R.id.logout_id){
+                userLogout(this);
             }
             else{
                 return true;
@@ -73,6 +81,19 @@ public class User_Dashboard_Activity extends AppCompatActivity {
         });
 
     }
+
+    private void userLogout(Context context) {
+        SharedPreferences preferences = getSharedPreferences("UserSession", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.apply();
+
+        Intent intent = new Intent(context, Login_Activity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
     //to replace framework with fragment
     private void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();

@@ -30,11 +30,6 @@
     <item android:title="Information">
         <menu>
             <group android:checkableBehavior="single">
-                <item android:id="@+id/viewReport_id"
-                    android:icon="@drawable/baseline_collections_24"
-                    android:title="View Reports"
-                    android:iconTint="@color/primary"
-                    />
 
                 <item android:id="@+id/GeneratedReport_id"
                     android:icon="@drawable/baseline_library_books"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EAEAEA"
-    tools:context=".Fragment_communityProfile">
+    tools:context=".Fragment_CommunityProfile">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -18,21 +18,168 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:background="@color/primary"
-                android:padding="10dp">
+                android:padding="20dp">
+
+                <ImageView
+                    android:id="@+id/police_profile_id"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/house"/>
 
                 <TextView
+                    android:id="@+id/police_name_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Community name"
+                    android:text="Community Detail"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/police_profile_id"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:letterSpacing="0.1"
+                    android:textSize="18sp"
+                    android:includeFontPadding="false"/>
+
+                <TextView
+                    android:id="@+id/community_name_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/police_name_id"
+                    android:text="Community name"
+                    android:layout_toEndOf="@+id/police_profile_id"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="10dp"
+                    android:textSize="14sp"
+                    android:layout_marginTop="5dp"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="513dp"
+                android:layout_margin="30dp"
+                android:background="@drawable/rectangle_shape_list"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal"
+                    android:paddingBottom="2dp">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/Oc_label_Id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Community Leader"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/primary"/>
+
+                        <TextView
+                            android:id="@+id/Oc_name_id"
+                            android:layout_below="@+id/Oc_label_Id"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Mr Botomani Bota"
+                            android:textColor="@color/secondary"
+                            android:textSize="18sp"
+                            android:layout_marginStart="10dp"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/secondary" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:paddingBottom="2dp">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/Oc_email_label_Id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Region Name"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/primary"/>
+
+                        <TextView
+                            android:id="@+id/Oc_email_id"
+                            android:layout_below="@+id/Oc_email_label_Id"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Central east"
+                            android:textColor="@color/secondary"
+                            android:textSize="18sp"
+                            android:layout_marginStart="10dp"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/secondary" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp"
+                    android:paddingBottom="2dp">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/Ps_membersLabel_Id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Contact"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/primary"/>
+
+                        <TextView
+                            android:id="@+id/Ps_members_id"
+                            android:layout_below="@+id/Ps_membersLabel_Id"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="099999999"
+                            android:textColor="@color/secondary"
+                            android:textSize="18sp"
+                            android:layout_marginStart="10dp"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
-
     </ScrollView>
 </FrameLayout>

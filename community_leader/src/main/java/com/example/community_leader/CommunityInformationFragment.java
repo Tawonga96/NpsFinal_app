@@ -1,4 +1,4 @@
-package com.example.nthandizi_police_service_app_ver1;
+package com.example.community_leader;
 
 import android.os.Bundle;
 
@@ -8,8 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
-public class Fragment_CommunityProfile extends Fragment {
+public class CommunityInformationFragment extends Fragment {
 
 
 
@@ -17,6 +16,6 @@ public class Fragment_CommunityProfile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment__community_profile, container, false);
+        return inflater.inflate(R.layout.fragment_community_information, container, false);
     }
 }

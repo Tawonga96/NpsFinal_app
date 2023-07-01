@@ -1,14 +1,19 @@
 package com.example.community_leader;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+
+import com.example.community_leader.models.Login;
 
 public class Login_Activity extends AppCompatActivity {
     private boolean passwordShowing = false;
@@ -26,7 +31,18 @@ public class Login_Activity extends AppCompatActivity {
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Login_Activity.this, User_Dashboard_Activity.class));
+                String fname = usernameET.getText().toString();
+                String password = passwordET.getText().toString();
+//                Context context = Login_Activity.this;
+
+                // Check if either username or password fields are empty
+                if (TextUtils.isEmpty(fname) || TextUtils.isEmpty(password)) {
+                    Toast.makeText(Login_Activity.this, "Please enter both username and password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                Login.login(fname, password, Login_Activity.this);
+
             }
         });
 
