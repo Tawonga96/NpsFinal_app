@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 
 
 public class Fragment_PersonProfile extends Fragment {
-    private TextView phoneNumTV, emailTV, fnameTV, lnameTV;
+    private TextView phoneNumTV, emailTV, fnameTV, lnameTV, communityTV;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +29,7 @@ public class Fragment_PersonProfile extends Fragment {
         lnameTV = view.findViewById(R.id.lname_id);
         phoneNumTV =view.findViewById(R.id.profile_num_id);
         emailTV =view.findViewById(R.id.profile_email_id);
+        communityTV = view.findViewById(R.id.community_name_id);
 
 
         // Retrieve the SharedPreferences values
@@ -38,12 +39,14 @@ public class Fragment_PersonProfile extends Fragment {
         String lastName = preferences.getString("lname", "");
         String email = preferences.getString("email", "");
         String phoneNumber = preferences.getString("pnumber", "");
+        String communityName =preferences.getString("community_name", "");
 
         //Display retrieved values
         fnameTV.setText(firstName);
         lnameTV.setText(lastName);
         emailTV.setText(email);
         phoneNumTV.setText(phoneNumber);
+        communityTV.setText(communityName);
 
 
         return  view;
