@@ -14,8 +14,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
-import com.example.nthandizi_police_service_app_ver1.models.Login;
-
 public class Fragment_PersonProfile extends Fragment {
 
     private TextView usernameTextView;
@@ -37,7 +35,7 @@ public class Fragment_PersonProfile extends Fragment {
                 String password = preferences.getString("password", "");
 
                 // Call the login method with the retrieved credentials
-                Login.login(fname, password, getActivity());
+//                Login.login(fname, password, getActivity());
             }
         });
 

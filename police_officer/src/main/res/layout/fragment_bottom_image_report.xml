@@ -8,15 +8,100 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:background="#191919"
+        android:layout_height="300dp"
+        android:background="#171717"
         android:scaleType="centerCrop" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Message_edittext_id"
+        android:layout_below="@+id/ReportTextTitle_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Message"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="330dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:lines="6"
+            android:background="@drawable/rectangle_shape_list"
+            android:gravity="top"
+            android:overScrollMode="always"
+            android:scrollbars="vertical"
+            android:scrollbarStyle="insideInset"
+            android:scrollHorizontally="false"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout_Id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginEnd="27dp"
+        android:gravity="center">
+
+
+        <RadioGroup
+            android:id="@+id/radioGroup_Id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioBtn_optA_Id"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="@null"
+                android:button="@null"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/radiobutton_red"
+                />
+
+            <RadioButton
+                android:id="@+id/radioBtn_optD_Id"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="@null"
+                android:button="@null"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/radiobutton_green"/>
+
+            <RadioButton
+                android:id="@+id/radioBtn_optB_Id"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="@null"
+                android:button="@null"
+                android:background="@drawable/radiobutton_amber"
+                android:layout_marginEnd="5dp"/>
+
+            <RadioButton
+                android:id="@+id/radioBtn_optC_Id"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="@null"
+                android:button="@null"
+                android:background="@drawable/radiobutton_yellow"
+                android:layout_marginEnd="5dp"/>
+
+        </RadioGroup>
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="520dp">
+        android:layout_marginTop="540dp">
 
         <Button
             android:id="@+id/cameraButton"
@@ -41,5 +126,19 @@
             android:onClick="pickImageFromGallery" />
 
     </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/changePass"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="600dp"
+        android:layout_marginEnd="60dp"
+        android:background="@color/lavender"
+        android:text="Send"
+        android:textSize="20sp"
+        android:textAllCaps="true"
+        android:textColor="#ffffff" />
+
 
 </FrameLayout>

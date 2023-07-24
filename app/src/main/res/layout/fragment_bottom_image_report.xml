@@ -12,13 +12,40 @@
         android:background="#171717"
         android:scaleType="centerCrop" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Message_edittext_id"
+        android:layout_below="@+id/ReportTextTitle_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Message"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="330dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:lines="6"
+            android:background="@drawable/rectangle_shape_list"
+            android:gravity="top"
+            android:overScrollMode="always"
+            android:scrollbars="vertical"
+            android:scrollbarStyle="insideInset"
+            android:scrollHorizontally="false"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <LinearLayout
         android:id="@+id/LinearLayout_Id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginStart="27dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="500dp"
         android:layout_marginEnd="27dp"
         android:gravity="center">
 
@@ -74,7 +101,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="450dp">
+        android:layout_marginTop="540dp">
 
         <Button
             android:id="@+id/cameraButton"
@@ -105,7 +132,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="550dp"
+        android:layout_marginTop="600dp"
         android:layout_marginEnd="60dp"
         android:background="@color/lavender"
         android:text="Send"
