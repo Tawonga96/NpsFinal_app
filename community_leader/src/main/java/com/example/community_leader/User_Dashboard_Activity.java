@@ -88,7 +88,7 @@ public class User_Dashboard_Activity extends AppCompatActivity {
         editor.clear();
         editor.apply();
 
-        Intent intent = new Intent(context, Login_Activity.class);
+        Intent intent = new Intent(context, loginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();

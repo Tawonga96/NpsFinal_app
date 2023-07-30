@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
-import com.example.community_leader.models.SendReport;
 import com.google.android.material.textfield.TextInputEditText;
 
 
@@ -45,7 +44,7 @@ public class FragmentBottom_text_report extends Fragment {
                 String messageReport = textInputMessage.getText().toString();
                 int selectedColor = getColorFromRadioButton();
 
-                SendReport.sendReport(messageReport, selectedColor);
+               //SendReport.sendReport(messageReport, selectedColor);
             }
         });
 

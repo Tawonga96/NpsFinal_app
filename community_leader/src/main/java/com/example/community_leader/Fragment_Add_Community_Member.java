@@ -1,85 +1,62 @@
 package com.example.community_leader;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
-import com.example.community_leader.models.Registration;
+import com.example.community_leader.models.Citizen;
 
 
 public class Fragment_Add_Community_Member extends Fragment {
-    EditText fnameEditText, lnameEditText, pnumberEditText, emailEditText,passwordET;
-    ImageView passwordIcon;
-    private boolean passwordShowing = false;
+    EditText AccountActivateET;
 
-    AppCompatButton registerAccount;
+    AppCompatButton ActivateAccount;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_add_community_member, container, false);
 
-        fnameEditText = rootView.findViewById(R.id.FnameET);
-        lnameEditText = rootView.findViewById(R.id.LnameET);
-        pnumberEditText = rootView.findViewById(R.id.phoneET);
-        emailEditText = rootView.findViewById(R.id.emailET);
-        passwordET = rootView.findViewById(R.id.passwordET);
+        AccountActivateET = rootView.findViewById(R.id.ETUserID);
+        ActivateAccount = rootView.findViewById(R.id.ActivateAccount);
 
-        passwordIcon = rootView.findViewById(R.id.passwordIcon);
-        registerAccount = rootView.findViewById(R.id.RegisterAccount);
-
-
-        passwordIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                //checking showing and hiding of password
-
-                if(passwordShowing){
-                    passwordShowing = false;
-
-                    passwordET.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    passwordIcon.setImageResource(R.drawable.show);
-                }
-                else{
-                    passwordShowing = true;
-
-                    passwordET.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                    passwordIcon.setImageResource(R.drawable.hide);
-                }
-                //move the cursor at the last of the text
-                passwordET.setSelection(passwordET.length());
-            }
-        });
-
-        registerAccount.setOnClickListener(new View.OnClickListener() {
+        ActivateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String fname = fnameEditText.getText().toString();
-                String lname = lnameEditText.getText().toString();
-                String pnumber = pnumberEditText.getText().toString();
-                String email = emailEditText.getText().toString();
-                String password = passwordET.getText().toString();
+               activateAccount();
 
-                Registration.register(fname, lname, pnumber, email, password, requireContext());
-                fnameEditText.setText("");
-                lnameEditText.setText("");
-                pnumberEditText.setText("");
-                emailEditText.setText("");
-                passwordET.setText("");
-
-//                Intent intent = new Intent(requireContext(), User_Dashboard_Activity.class);
-//                startActivity(intent);
             }
         });
 
         return rootView;
+    }
+
+    private void activateAccount() {
+        String ActivateUserid = AccountActivateET.getText().toString();
+        Fragment_Add_Community_Member fragment = Fragment_Add_Community_Member.this;
+
+        Citizen citizen = new Citizen();
+        citizen.activateAccount(ActivateUserid, fragment.getActivity(), new Citizen.AccountActivationCallback() {
+            @Override
+            public void onSuccess(String successMessage) {
+                // Handle successful account activation
+                AccountActivateET.getText().clear();
+                // Show a toast message or perform any action you want to take after successful activation
+                Toast.makeText(getActivity(), successMessage, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(String errorMessage) {
+                // Handle account activation failure
+                AccountActivateET.getText().clear();
+                // Show a toast message or perform any action you want to take after activation failure
+                Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

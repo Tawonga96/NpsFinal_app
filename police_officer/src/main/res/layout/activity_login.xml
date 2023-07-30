@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="#ffffff"
-    tools:context=".Login_Activity">
+    tools:context=".loginActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,7 +27,7 @@
         android:layout_marginTop="5dp"/>
 
     <EditText
-        android:id="@+id/usernameET"
+        android:id="@+id/ETUsername"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:background="@drawable/round_back_dark_blue5_15"
@@ -52,7 +52,7 @@
         android:background="@drawable/round_back_dark_blue5_15">
 
         <EditText
-            android:id="@+id/passwordET"
+            android:id="@+id/ETPassword"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toStartOf="@+id/passwordIcon"
@@ -77,8 +77,19 @@
             android:src="@drawable/show" />
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/forgotPasswordBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="Forgot password"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:textColor="@color/primary"
+        />
+
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/signInBtn"
+        android:id="@+id/BtnSignIn"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginEnd="20dp"
@@ -89,5 +100,28 @@
         android:background="@drawable/round_back_primary_15"
         android:textColor="#ffffff"
         />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create account "/>
+
+        <TextView
+            android:id="@+id/BtnSignUp"
+            android:layout_marginStart="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:textColor="@color/primary"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
 
 </LinearLayout>

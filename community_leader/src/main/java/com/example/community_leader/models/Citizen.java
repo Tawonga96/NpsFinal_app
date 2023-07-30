@@ -1,9 +1,9 @@
-package com.example.nthandizi_police_service_app_ver1.models;
+package com.example.community_leader.models;
 
-import java.util.*;
-import android.os.Looper;
+import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -13,6 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Set;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -206,11 +207,98 @@ public class Citizen extends User {
         });
     }
 
-    // USER LOGIN
-    public void userLogin(String fname, String password,final Context context, final LoginCallback callback) {
+//    // USER LOGIN
+//    public void userLogin(String fname, String password,final Context context, final LoginCallback callback) {
+//        OkHttpClient client = new OkHttpClient();
+//
+//        // Create a JSON object with the user's login data
+//        JSONObject loginRequestData = new JSONObject();
+//        try {
+//            loginRequestData.put("fname", fname);
+//            loginRequestData.put("password", password);
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//            callback.onFailure("Failed to create login data.");
+//            return;
+//        }
+//
+//        // Create the request body
+//        RequestBody loginRequestBody = RequestBody.create(MediaType.parse("application/json"), loginRequestData.toString());
+//
+//        // Prepare the HTTP POST request for user login
+//        Request userLoginRequest = new Request.Builder()
+//                .url(UserLoginApiUrl )
+//                .header("Content-Type", "application/json")
+//                .post(loginRequestBody)
+//                .build();
+//
+//        // Execute the request asynchronously for user login
+//        client.newCall(userLoginRequest).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+//                e.printStackTrace();
+//                // Handle the failure case on the main/UI thread
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        String errorMessage = "Failed to login.";
+//                        callback.onFailure(errorMessage);
+//                    }
+//                });
+//            }
+//
+//            @Override
+//            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+//                final String responseBody = response.body().string();
+//
+//                // Handle the response based on the HTTP status code
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        try {
+//                            JSONObject responseObject = new JSONObject(responseBody);
+//
+//                            if (response.isSuccessful()) {
+//                                // Successful login
+//                                callback.onSuccess(responseObject);
+//
+//                            } else if (response.code() == 400) {
+//                                // Bad Request - User does not exist or other validation error
+//                                String errorMessage = "User with the provided First Name does not exist.";
+//                                callback.onFailure(errorMessage);
+//
+//                            } else if (response.code() == 401) {
+//                                // Unauthorized - Invalid password
+//                                String errorMessage = "Invalid password.";
+//                                callback.onFailure(errorMessage);
+//
+//                            } else if (response.code() == 403) {
+//                                // Forbidden - Account not activated
+//                                String errorMessage = "Your account is not yet activated.";
+//                                callback.onFailure(errorMessage);
+//
+//                            } else {
+//                                // Other error
+//                                String errorMessage = "Failed to login.";
+//                                callback.onFailure(errorMessage);
+//
+//                            }
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                            String errorMessage = "Failed to parse server response.";
+//                            callback.onFailure(errorMessage);
+//                        }
+//                    }
+//                });
+//            }
+//        });
+//    }
+
+    // Method for Community Leader login
+    public void communityLeaderLogin(String fname, String password, final Context context, final CommunityLeaderLoginCallback callback) {
         OkHttpClient client = new OkHttpClient();
 
-        // Create a JSON object with the user's login data
+        // Create a JSON object with the login data
         JSONObject loginRequestData = new JSONObject();
         try {
             loginRequestData.put("fname", fname);
@@ -224,23 +312,104 @@ public class Citizen extends User {
         // Create the request body
         RequestBody loginRequestBody = RequestBody.create(MediaType.parse("application/json"), loginRequestData.toString());
 
-        // Prepare the HTTP POST request for user login
-        Request userLoginRequest = new Request.Builder()
-                .url(UserLoginApiUrl )
+        // Prepare the HTTP POST request for login
+        Request loginRequest = new Request.Builder()
+                .url(LeaderLoginApiUrl)
                 .header("Content-Type", "application/json")
                 .post(loginRequestBody)
                 .build();
 
-        // Execute the request asynchronously for user login
-        client.newCall(userLoginRequest).enqueue(new Callback() {
+        // Execute the request asynchronously for login
+        client.newCall(loginRequest).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                e.printStackTrace();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String errorMessage = "Failed to log in as Community Leader. Please check your internet connection.";
+                        callback.onFailure(errorMessage);
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                final String responseBody = response.body().string();
+                final int responseCode = response.code();
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            JSONObject responseObject = new JSONObject(responseBody);
+
+                            if (responseCode == 200) {
+                                // Successful login
+                                JSONObject userData = responseObject.getJSONObject("user_data");
+                                callback.onSuccess(userData);
+                            } else if (responseCode == 400) {
+                                // Bad Request - Invalid data or missing fields
+                                String errorMessage = responseObject.optString("error");
+                                callback.onFailure(errorMessage);
+                            } else if (responseCode == 401) {
+                                // Unauthorized - Invalid password
+                                String errorMessage = responseObject.optString("error");
+                                callback.onFailure(errorMessage);
+                            } else if (responseCode == 403) {
+                                // Forbidden - Account not activated or not a community leader
+                                String errorMessage = responseObject.optString("message");
+                                callback.onFailure(errorMessage);
+                            } else {
+                                // Other error
+                                String errorMessage = "Failed to log in as Community Leader.";
+                                callback.onFailure(errorMessage);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            String errorMessage = "Failed to parse login response.";
+                            callback.onFailure(errorMessage);
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    // Method to activate user account
+    public void activateAccount(String ActivateUserid, final Context context, final AccountActivationCallback callback) {
+        OkHttpClient client = new OkHttpClient();
+
+        // Create a JSON object with the user's UID for account activation
+        JSONObject activationData = new JSONObject();
+        try {
+            activationData.put("uid", ActivateUserid);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            callback.onFailure("Failed to create account activation data.");
+            return;
+        }
+
+        // Create the request body
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), activationData.toString());
+
+        // Prepare the HTTP POST request for account activation
+        Request activationRequest = new Request.Builder()
+                .url(AccountActivationApiUrl)
+                .header("Content-Type", "application/json")
+                .post(requestBody)
+                .build();
+
+        // Execute the request asynchronously for account activation
+        client.newCall(activationRequest).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 e.printStackTrace();
                 // Handle the failure case on the main/UI thread
-                runOnUiThread(new Runnable() {
+                ((Activity) context).runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        String errorMessage = "Failed to login.";
+                        String errorMessage = "Failed to activate account. Please check your internet connection.";
                         callback.onFailure(errorMessage);
                     }
                 });
@@ -251,36 +420,21 @@ public class Citizen extends User {
                 final String responseBody = response.body().string();
 
                 // Handle the response based on the HTTP status code
-                runOnUiThread(new Runnable() {
+                ((Activity) context).runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         try {
                             JSONObject responseObject = new JSONObject(responseBody);
 
                             if (response.isSuccessful()) {
-                                // Successful login
-                                callback.onSuccess(responseObject);
-
-                            } else if (response.code() == 400) {
-                                // Bad Request - User does not exist or other validation error
-                                String errorMessage = "User with the provided First Name does not exist.";
-                                callback.onFailure(errorMessage);
-
-                            } else if (response.code() == 401) {
-                                // Unauthorized - Invalid password
-                                String errorMessage = "Invalid password.";
-                                callback.onFailure(errorMessage);
-
-                            } else if (response.code() == 403) {
-                                // Forbidden - Account not activated
-                                String errorMessage = "Your account is not yet activated.";
-                                callback.onFailure(errorMessage);
+                                // Account activation successful
+                                String successMessage = responseObject.optString("message");
+                                callback.onSuccess(successMessage);
 
                             } else {
-                                // Other error
-                                String errorMessage = "Failed to login.";
+                                // Account activation failed
+                                String errorMessage = responseObject.optString("error");
                                 callback.onFailure(errorMessage);
-
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -292,6 +446,7 @@ public class Citizen extends User {
             }
         });
     }
+
 
     public interface RegistrationCallback {
         void onSuccess(JSONObject responseBody);
@@ -305,6 +460,16 @@ public class Citizen extends User {
 
     public interface LoginCallback {
         void onSuccess(JSONObject response);
+        void onFailure(String errorMessage);
+    }
+
+    public interface CommunityLeaderLoginCallback {
+        void onSuccess(JSONObject userData);
+        void onFailure(String errorMessage);
+    }
+
+    public interface AccountActivationCallback {
+        void onSuccess(String successMessage);
         void onFailure(String errorMessage);
     }
 

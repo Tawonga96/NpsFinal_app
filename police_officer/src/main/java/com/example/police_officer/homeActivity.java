@@ -14,7 +14,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-public class Home_activity extends AppCompatActivity {
+public class homeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class Home_activity extends AppCompatActivity {
             int bottomNav_id = item.getItemId();
 
             if (bottomNav_id == R.id.btm_home) {
-                Intent Home_Intent = new Intent(Home_activity.this, Home_activity.class);
+                Intent Home_Intent = new Intent(homeActivity.this, homeActivity.class);
                 startActivity(Home_Intent);
             } else if (bottomNav_id == R.id.btm_message) {
                 replaceFragment(new FragmentBottom_text_report());

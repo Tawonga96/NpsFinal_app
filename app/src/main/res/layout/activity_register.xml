@@ -89,28 +89,6 @@
         android:layout_marginTop="20dp"
         />
 
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="55dp"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginEnd="20dp"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:background="@drawable/round_back_dark_blue5_15">-->
-
-<!--        <EditText-->
-<!--            android:id="@+id/occupationET"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:background="@android:color/transparent"-->
-<!--            android:hint="Occupation"-->
-<!--            android:inputType="text"-->
-<!--            android:maxLines="1"-->
-<!--            android:paddingStart="20dp"-->
-<!--            android:paddingEnd="20dp"-->
-<!--            android:textSize="16sp" />-->
-
-<!--    </RelativeLayout>-->
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
