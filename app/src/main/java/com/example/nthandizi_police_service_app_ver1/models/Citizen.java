@@ -4,6 +4,7 @@ import java.util.*;
 import android.os.Looper;
 import android.content.Context;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -38,6 +39,13 @@ public class Citizen extends User {
     //REGISTER USER
     public void registerUser(String fname, String lname, String pnumber, String email, String password, final Context context, final RegistrationCallback callback) {
         OkHttpClient client = new OkHttpClient();
+
+        // Check if fname and password are provided and not empty
+        if (TextUtils.isEmpty(fname) || TextUtils.isEmpty(lname) || TextUtils.isEmpty(pnumber) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+            String errorMessage = "Please provide values for all required fields";
+            callback.onFailure(errorMessage);
+            return;
+        }
 
         // Create a JSON object with the user's registration data
         JSONObject userRequestData = new JSONObject();
@@ -99,7 +107,7 @@ public class Citizen extends User {
                                 callback.onSuccess(responseObject);
 
                             } else {
-                                String errorMessage = "Failed to Register.";
+                                String errorMessage = "Please provide values for all required fields.";
                                 if (responseObject.has("message")) {
                                     errorMessage = responseObject.optString("message");
                                 } else if (responseObject.has("error")) {
@@ -126,6 +134,12 @@ public class Citizen extends User {
     public void registerCitizen(String citizenID, String occupation, String Community, final Context context, final CitizenRegistrationCallback callback) {
         OkHttpClient client = new OkHttpClient();
 
+        // Check if fname and password are provided and not empty
+        if (TextUtils.isEmpty(citizenID) || TextUtils.isEmpty(occupation) || TextUtils.isEmpty(Community)) {
+            String errorMessage = "Please provide values for all required fields.";
+            callback.onFailure(errorMessage);
+            return;
+        }
         // Create a JSON object with the citizen's registration data
         JSONObject citizenRequestData = new JSONObject();
         try {
@@ -210,6 +224,12 @@ public class Citizen extends User {
     public void userLogin(String fname, String password,final Context context, final LoginCallback callback) {
         OkHttpClient client = new OkHttpClient();
 
+        // Check if fname and password are provided and not empty
+        if (TextUtils.isEmpty(fname) || TextUtils.isEmpty(password)) {
+            String errorMessage = "Please provide values for all required fields";
+            callback.onFailure(errorMessage);
+            return;
+        }
         // Create a JSON object with the user's login data
         JSONObject loginRequestData = new JSONObject();
         try {
@@ -249,42 +269,42 @@ public class Citizen extends User {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 final String responseBody = response.body().string();
+                final int responseCode = response.code();
+
 
                 // Handle the response based on the HTTP status code
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            JSONObject responseObject = new JSONObject(responseBody);
-
-                            if (response.isSuccessful()) {
-                                // Successful login
-                                callback.onSuccess(responseObject);
-
-                            } else if (response.code() == 400) {
+                            // If response is successful (status code 200)
+                            if (responseCode == 200) {
+                                JSONObject responseObject = new JSONObject(responseBody);
+                                JSONObject userData = responseObject.getJSONObject("user_data");
+                                callback.onSuccess(userData);
+                            } else if (responseCode == 400) {
                                 // Bad Request - User does not exist or other validation error
-                                String errorMessage = "User with the provided First Name does not exist.";
+                                JSONObject responseObject = new JSONObject(responseBody);
+                                String errorMessage = responseObject.optString("error");
                                 callback.onFailure(errorMessage);
-
-                            } else if (response.code() == 401) {
+                            } else if (responseCode == 401) {
                                 // Unauthorized - Invalid password
-                                String errorMessage = "Invalid password.";
+                                JSONObject responseObject = new JSONObject(responseBody);
+                                String errorMessage = responseObject.optString("error");
                                 callback.onFailure(errorMessage);
-
-                            } else if (response.code() == 403) {
+                            } else if (responseCode == 403) {
                                 // Forbidden - Account not activated
-                                String errorMessage = "Your account is not yet activated.";
+                                JSONObject responseObject = new JSONObject(responseBody);
+                                String errorMessage = responseObject.optString("message");
                                 callback.onFailure(errorMessage);
-
                             } else {
                                 // Other error
-                                String errorMessage = "Failed to login.";
+                                String errorMessage = "Failed to log in as User.";
                                 callback.onFailure(errorMessage);
-
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            String errorMessage = "Failed to parse server response.";
+                            String errorMessage = "Failed to parse server response: " + e.getMessage();
                             callback.onFailure(errorMessage);
                         }
                     }

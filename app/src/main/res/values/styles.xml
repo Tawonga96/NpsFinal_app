@@ -17,12 +17,12 @@
         <item name="android:textAppearance">@android:style/TextAppearance.Large</item>
     </style>
     
-    <style name="RadioButtonStyle" parent="Theme.AppCompat.Light">
-        <!--color of radio button-->
-        <item name="colorAccent">@android:color/holo_red_light</item>
-        <!-- default color of radio button -->
-        <item name="android:textColorPrimary">#FFA500</item>
+<!--    <style name="RadioButtonStyle" parent="Theme.AppCompat.Light">-->
+<!--        &lt;!&ndash;color of radio button&ndash;&gt;-->
+<!--        <item name="colorAccent">@android:color/holo_red_light</item>-->
+<!--        &lt;!&ndash; default color of radio button &ndash;&gt;-->
+<!--        <item name="android:textColorPrimary">#FFA500</item>-->
 
-    </style>
+<!--    </style>-->
 
 </resources>

@@ -1,5 +1,7 @@
 package com.example.nthandizi_police_service_app_ver1;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
@@ -7,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -65,6 +68,11 @@ public class Login_Activity extends AppCompatActivity {
                              String lname = response.getString("lname");
                              String pnumber = response.getString("pnumber");
                              String email = response.getString("email");
+                             String memberId = response.getString("mid");
+                             String occupation = response.getString("occupation");
+                             String district = response.getString("district");
+                             String communityName = response.getString("comm_name");
+
 
                              // Save user data in SharedPreferences
                              SharedPreferences sharedPreferences = getSharedPreferences("UserData", MODE_PRIVATE);
@@ -74,10 +82,17 @@ public class Login_Activity extends AppCompatActivity {
                              editor.putString("lname", lname);
                              editor.putString("pnumber", pnumber);
                              editor.putString("email", email);
+                             editor.putString("mid",memberId);
+                             editor.putString("occupation", occupation);
+                             editor.putString("district", district);
+                             editor.putString("comm_name", communityName);
                              editor.apply();
 
+                             Log.d(TAG, "Occupation :" + occupation);
+                             Log.d(TAG,"Community :" + communityName);
+
                              // TODO: Navigate to the dashboard activity or any other screen you want to display after successful login.
-                             Intent intent = new Intent(Login_Activity.this, Login_Activity.class);
+                             Intent intent = new Intent(Login_Activity.this, User_Dashboard_Activity.class);
                              startActivity(intent);
                          } catch (JSONException e) {
                              String errorMessage = "Failed to parse login response.";

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -298,6 +299,13 @@ public class Citizen extends User {
     public void communityLeaderLogin(String fname, String password, final Context context, final CommunityLeaderLoginCallback callback) {
         OkHttpClient client = new OkHttpClient();
 
+        // Check if fname and password are provided and not empty
+        if (TextUtils.isEmpty(fname) || TextUtils.isEmpty(password)) {
+            String errorMessage = "Please provide both the First Name and Password.";
+            callback.onFailure(errorMessage);
+            return;
+        }
+
         // Create a JSON object with the login data
         JSONObject loginRequestData = new JSONObject();
         try {
@@ -458,10 +466,10 @@ public class Citizen extends User {
         void onFailure(String errorMessage);
     }
 
-    public interface LoginCallback {
-        void onSuccess(JSONObject response);
-        void onFailure(String errorMessage);
-    }
+//    public interface LoginCallback {
+//        void onSuccess(JSONObject response);
+//        void onFailure(String errorMessage);
+//    }
 
     public interface CommunityLeaderLoginCallback {
         void onSuccess(JSONObject userData);
