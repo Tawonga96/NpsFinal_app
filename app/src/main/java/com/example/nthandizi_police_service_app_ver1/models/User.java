@@ -5,10 +5,16 @@ package com.example.nthandizi_police_service_app_ver1.models;
  * 
  */
 public abstract class User {
-
+//    public static String CreateAlertApiUrl = "http://192.168.8.102:8000/api/v1/Cases/Create_alert/";
+//    public static String UserRegisterApiUrl = "http://192.168.8.102:8000/api/v1/User/register/";
+//    public static String CitizenRegisterApiUrl = "http://10.0.2.2:8000/api/v1/Community/CitizenRegister/";
+//    public static  String UserLoginApiUrl = "http://10.0.2.2:8000/api/v1/User/login/";
+//    public static  String UserLoginApiUrl = "http://192.168.8.102:8000/api/v1/User/login/";
     public static String UserRegisterApiUrl = "http://10.0.2.2:8000/api/v1/User/register/";
-    public static String CitizenRegisterApiUrl = "http://10.0.2.2:8000/api/v1/Community/CitizenRegister/";
+    public static String CitizenRegisterApiUrl = "http://192.168.8.102:8000/api/v1/Community/CitizenRegister/";
     public static  String UserLoginApiUrl = "http://10.0.2.2:8000/api/v1/User/login/";
+
+
     public User() {
 
     }

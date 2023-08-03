@@ -61,7 +61,7 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/radioBtn_optA_Id"
+                android:id="@+id/radio_OptA_Id"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:text="@null"
@@ -71,7 +71,7 @@
                 />
 
             <RadioButton
-                android:id="@+id/radioBtn_optD_Id"
+                android:id="@+id/radio_OptD_Id"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:text="@null"
@@ -80,7 +80,7 @@
                 android:background="@drawable/radiobutton_green"/>
 
             <RadioButton
-                android:id="@+id/radioBtn_optB_Id"
+                android:id="@+id/radio_OptB_Id"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:text="@null"
@@ -89,7 +89,7 @@
                 android:layout_marginEnd="5dp"/>
 
             <RadioButton
-                android:id="@+id/radioBtn_optC_Id"
+                android:id="@+id/radio_OptC_Id"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:text="@null"
@@ -136,7 +136,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/changePass"
+        android:id="@+id/sendVideoReport"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="60dp"
