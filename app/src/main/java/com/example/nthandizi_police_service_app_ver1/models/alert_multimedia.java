@@ -107,7 +107,7 @@ public class alert_multimedia extends Alert {
                                 } else if (responseObject.has("error")){
                                     String errorMessage = responseObject.optString("error");
                                     // Display the error message using a Toast
-                                    Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context.getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
                                     callback.onFailure(errorMessage);
                                 }else{
                                     // Other error
