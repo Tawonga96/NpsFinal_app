@@ -117,7 +117,7 @@ public class alert_multimedia extends Alert {
                             } catch (JSONException e) {
                                 e.printStackTrace();
                                 String errorMessage = "Failed to parse server response.";
-                                Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context.getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
                                 callback.onFailure(errorMessage);
                             }
                         }
